@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self';">
+  <title>Nanute</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="root" class="mode-compact">
+
+    <!-- ════════════════════════════════
+         COMPACT MODE — animated orb
+         ════════════════════════════════ -->
+    <div id="orb-container">
+      <canvas id="orb-canvas"></canvas>
+    </div>
+
+    <!-- ════════════════════════════════
+         EXPANDED MODE — chat panel
+         ════════════════════════════════ -->
+    <div id="panel" role="dialog" aria-label="Assistente">
+
+      <!-- Header: draggable, geometric only -->
+      <div class="panel-header" id="panel-header">
+        <div class="panel-pulse"></div>
+        <div class="panel-spacer"></div>
+        <!-- Geometric close: X made of two lines -->
+        <button class="close-btn" id="close-btn" aria-label="Fechar">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="2" y1="2" x2="8" y2="8"/>
+            <line x1="8" y1="2" x2="2" y2="8"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Chat messages -->
+      <div class="chat-area" id="chat-area">
+        <div class="msg assistant">
+          Olá. Estou pronto para ajudar.
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="input-area">
+        <div
+          class="input-field"
+          id="input-field"
+          contenteditable="true"
+          role="textbox"
+          aria-multiline="false"
+          aria-label="Mensagem"
+          data-placeholder="Pergunte algo..."
+          spellcheck="false"
+        ></div>
+        <!-- Geometric send: arrow made of lines -->
+        <button class="send-btn" id="send-btn" aria-label="Enviar">
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 7H12M8 3L12 7L8 11"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="canvas-engine.js"></script>
+  <script src="state-machine.js"></script>
+</body>
+</html>
